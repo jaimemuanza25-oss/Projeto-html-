@@ -1,0 +1,95 @@
+<table border="1">
+  <tr>
+    <th colspan="2">Dados Pessoais</th>
+  </tr>
+  <tr>
+    <td>Nome:</td>
+    <td><input type="text" name="nome"></td>
+  </tr>
+  <tr>
+    <td>Nome do Pai:</td>
+    <td><input type="text" name="nome_pai"></td>
+  </tr>
+  <tr>
+    <td>Nome da Mãe:</td>
+    <td><input type="text" name="nome_mae"></td>
+  </tr>
+  <tr>
+    <td>Número do Bilhete:</td>
+    <td><input type="text" name="bilhete"></td>
+  </tr>
+  <tr>
+    <td>Residência:</td>
+    <td><input type="text" name="residencia"></td>
+  </tr>
+  <tr>
+    <td>Bairro:</td>
+    <td><input type="text" name="bairro"></td>
+  </tr>
+  <tr>
+    <td>Província:</td>
+    <td><input type="text" name="provincia"></td>
+  </tr>
+  <tr>
+    <td>Data de Nascimento:</td>
+    <td><input type="date" name="nascimento"></td>
+  </tr>
+  <tr>
+    <td>Sexo:</td>
+    <td>
+      <input type="radio" id="masculino" name="sexo" value="Masculino">
+      <label for="masculino">Masculino</label>
+      <input type="radio" id="feminino" name="sexo" value="Feminino">
+      <label for="feminino">Feminino</label>
+    </td>
+  </tr>
+  <tr>
+    <td>Estado Civil:</td>
+    <td>
+      <select name="estado_civil">
+        <option value="Solteiro(a)">Solteiro(a)</option>
+        <option value="Casado(a)">Casado(a)</option>
+        <option value="Divorciado(a)">Divorciado(a)</option>
+        <option value="Viúvo(a)">Viúvo(a)</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Altura (cm):</td>
+    <td><input type="number" name="altura"></td>
+  </tr>
+  <tr>
+    <td>Emissão do Bilhete:</td>
+    <td><input type="date" name="emissao"></td>
+  </tr>
+  <tr>
+    <td>Válido Até:</td>
+    <td><input type="date" name="validade"></td>
+  </tr>
+  <tr>
+    <th colspan="2">Dados Académicos</th>
+  </tr>
+  <tr>
+    <td>Instituição:</td>
+    <td><input type="text" name="instituicao"></td>
+  </tr>
+  <tr>
+    <td>Curso:</td>
+    <td><input type="text" name="curso"></td>
+  </tr>
+  <tr>
+    <td>Nível:</td>
+    <td><input type="text" name="nivel"></td>
+  </tr>
+  <tr>
+    <td>Ano de Ingresso:</td>
+    <td><input type="text" name="ano_ingresso"></td>
+  </tr>
+  <tr>
+    <td>Número de Estudante:</td>
+    <td><input type="text" name="numero_estudante"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><input type="submit" value="Enviar"></td>
+  </tr>
+</table>
