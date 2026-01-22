@@ -1,166 +1,70 @@
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HOME - Trabalhos de Programação</title>
+    <title>Página 1º Trimestre</title>
+    <style>
+        table {
+            width: 100%;
+            height: 100vh;
+            border-collapse: collapse;
+        }
 
-  <style>
-    /* Reset e fontes */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+        td {
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+            font-family: Arial, sans-serif;
+        }
 
-    body {
-      background: #f1f5f9;
-      color: #333;
-    }
+        .menu {
+            height: 60px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
 
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      background: #3e68ca;
-      padding: 15px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      flex-wrap: wrap;
-    }
+        .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+        }
 
-    .header h1 a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-    }
+        .lado-esquerdo {
+            width: 200px;
+            font-weight: bold;
+            background-color: #e6e6e6;
+        }
 
-    /* Menu Toggle Mobile */
-    .menu-toggle {
-      display: none;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .menu-toggle.active {
-      transform: rotate(90deg);
-    }
-
-    nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    nav a {
-      text-decoration: none;
-      padding: 8px 16px;
-      background: #1e293b;
-      color: #fff;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: 0.3s, transform 0.3s;
-    }
-
-    nav a:hover {
-      background: #3e68ca;
-      color: #fff;
-      transform: scale(1.05);
-    }
-
-    /* Main */
-    main {
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .trimestres {
-      padding: 50px 30px;
-      text-align: center;
-      background: linear-gradient(135deg, #3e68ca, #1e293b);
-      color: #fff;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      max-width: 700px;
-      width: 100%;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .trimestres:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-    }
-
-    .trimestres h1 {
-      font-size: 2rem;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 10px;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav a {
-        width: 100%;
-        text-align: center;
-        margin: 5px 0;
-      }
-    }
-  </style>
+        .conteudo {
+            font-size: 22px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="header">
-  <h1><a href="index.html">HOME</a></h1>
-  <button class="menu-toggle">☰</button>
+<table>
+    <tr>
+        <td class="menu" colspan="2">
+            <a href="index.html">HOME</a>
+            <a href="1º trimestre/Link.html">T1</a>
+            <a href="1º trimestre/midias.html">T2</a>
+            <a href="1º trimestre/formulario.html">T3</a>
+            <a href="1º trimestre/tabela.html">T4</a>
+            <a href="1º trimestre/prova.html">T5</a>
+        </td>
+    </tr>
 
-  <nav id="menu">
-    <a href="pag/trimestre1.html">I Trimestre</a>
-    <a href="pag/trimestre2.html">II Trimestre</a>
-    <a href="pag/trimestre3.html">III Trimestre</a>
-  </nav>
-</header>
+    <tr>
+        <td class="lado-esquerdo">
+            <a href="tri1.html"></a>1º TRIMESTRE<br><br>
+            <a href="tri2.html"></a>2º TRIMESTRE<br><br>
+            <a href="tri3.html"></a>3º TRIMESTRE<br><br>
+            <a href=""></a>FIM <br><br>
+        </td>
 
-<main>
-  <div class="trimestres">
-    <h1>Seja bem-vindo/a ao meu programa</h1>
-    
-  </div>
-</main>
-
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
-
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
-    toggle.classList.toggle('active');
-  });
-</script>
+        <td class="conteudo">
+            <h2>Bem-vindo ao 1º Trimestre</h2>
+        </td>
+    </tr>
+</table>
 
 </body>
-u
 </html>
