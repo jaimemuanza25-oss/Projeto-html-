@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa Trimestral</title>
+<style>
+:root {
+  --cor-fundo: #f0f4f8;
+  --cor-header: #2c3e50;
+  --cor-texto: #fff;
+  --cor-card: #fff;
+  --cor-link1: #3498db;
+  --cor-hover1: #2980b9;
+  --cor-link2: #e67e22;
+  --cor-hover2: #d35400;
+  --cor-link3: #8e44ad;
+  --cor-hover3: #732d91;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body { background: var(--cor-fundo); color: #333; }
+
+header { background: var(--cor-header); color: var(--cor-texto); padding: 15px 20px; text-align: center; }
+header h1 { margin: 0; font-size: 28px; }
+
+main { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+
+.btn {
+  padding: 12px 25px; font-size: 18px; background: var(--cor-link1);
+  color: var(--cor-texto); border: none; border-radius: 8px; cursor: pointer; transition: 0.3s;
+}
+.btn:hover { background: var(--cor-hover1); }
+
+.trimestre, .topicos { background: var(--cor-card); padding: 30px 50px; border-radius: 12px;
+box-shadow: 0 6px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 800px; transition: 0.3s; }
+.trimestre:hover, .topicos:hover { transform: translateY(-3px); }
+
+.trimestre h2, .topicos h3 { font-size: 26px; margin-bottom: 20px; color: #2c3e50; }
+
+ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+
+ul li a { text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block; color: #fff; transition: 0.3s; }
+.trimestre1 ul li a { background: var(--cor-link1); }
+.trimestre1 ul li a:hover { background: var(--cor-hover1); }
+.trimestre2 ul li a { background: var(--cor-link2); }
+.trimestre2 ul li a:hover { background: var(--cor-hover2); }
+.trimestre3 ul li a { background: var(--cor-link3); }
+.trimestre3 ul li a:hover { background: var(--cor-hover3); }
+
+.trimestres, .topicos { display: none; }
+
+.topicos-content h1, .topicos-content h2, .topicos-content p, .topicos-content ul, 
+.topicos-content pre, .topicos-content code, .topicos-content div, .topicos-content img,
+.topicos-content video, .topicos-content audio, .topicos-content button, .topicos-content form,
+.topicos-content fieldset, .topicos-content legend, .topicos-content label, .topicos-content input,
+.topicos-content select { max-width: 800px; margin: 15px auto; }
+
+.topicos-content h2 { border-bottom: 2px solid #3498db; padding-bottom: 5px; color: #34495e; }
+.topicos-content strong { color: #2980b9; }
+.topicos-content code { background-color: #dfe6e9; padding: 2px 4px; border-radius: 3px; font-family: Consolas, monospace; }
+.topicos-content pre { background-color: #ecf0f1; padding: 10px; border-left: 5px solid #2980b9; border-radius: 5px; overflow-x: auto; }
+.topicos-content .menu { background-color: #3498db; color: white; padding: 10px; margin: 5px 0; border-radius: 5px; font-weight: bold; }
+.topicos-content #cabecalho { background-color: #95a5a6; color: white; padding: 15px; text-align: center; border-radius: 5px; }
+.topicos-content p.exemplo { color: blue; font-size: 16px; font-style: italic; }
+.topicos-content .container { background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.topicos-content .imagem { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+.topicos-content .video { width: 100%; height: 400px; border-radius: 10px; margin-bottom: 20px; }
+.topicos-content .audio { width: 100%; margin-bottom: 20px; }
+
+form input[type="text"], form input[type="number"], form input[type="date"], form select, form input[type="submit"], form input[type="radio"] {
+  padding: 8px; margin: 5px 0 10px 0; width: 100%; border-radius: 5px; border: 1px solid #ccc;
+}
+form input[type="submit"] { background-color: var(--cor-link1); color: #fff; cursor: pointer; transition: 0.3s; }
+form input[type="submit"]:hover { background-color: var(--cor-hover1); }
+
+@media (max-width:768px) {
+  ul { flex-direction: column; }
+  ul li a { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Seja bem-vindo ao programa</h1>
+</header>
+
+<main>
+<button class="btn" id="btnIniciar">Iniciar</button>
+
+<div class="trimestres">
+  <div class="trimestre trimestre1" data-trimestre="1">
+    <h2>I Trimestre</h2>
+    <ul>
+      <li><a href="#" data-topico="1-t1">t1</a></li>
+      <li><a href="#" data-topico="1-t2">t2</a></li>
+      <li><a href="#" data-topico="1-t3">t3</a></li>
+      <li><a href="#" data-topico="1-t4">t4</a></li>
+      <li><a href="#" data-topico="1-t5">t5</a></li>
+    </ul>
+  </div>
+
+  <div class="trimestre trimestre2" data-trimestre="2">
+    <h2>II Trimestre</h2>
+    <ul>
+      <li><a href="#" data-topico="2-t1">t1</a></li>
+      <li><a href="#" data-topico="2-t2">t2</a></li>
+      <li><a href="#" data-topico="2-t3">t3</a></li>
+      <li><a href="#" data-topico="2-t4">t4</a></li>
+      <li><a href="#" data-topico="2-t5">t5</a></li>
+    </ul>
+  </div>
+
+  <div class="trimestre trimestre3" data-trimestre="3">
+    <h2>III Trimestre</h2>
+    <ul>
+      <li><a href="#" data-topico="3-t1">t1</a></li>
+      <li><a href="#" data-topico="3-t2">t2</a></li>
+      <li><a href="#" data-topico="3-t3">t3</a></li>
+      <li><a href="#" data-topico="3-t4">t4</a></li>
+      <li><a href="#" data-topico="3-t5">t5</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="topicos">
+  <div class="topicos-content">
+    <h3 id="tituloTopico"></h3>
+    <div id="conteudoTopico"></div>
+    <button class="btn" id="btnVoltar">Voltar</button>
+  </div>
+</div>
+</main>
+
+<script>
+const btnIniciar = document.getElementById('btnIniciar');
+const trimestres = document.querySelector('.trimestres');
+const topicosDiv = document.querySelector('.topicos');
+const tituloTopico = document.getElementById('tituloTopico');
+const conteudoTopico = document.getElementById('conteudoTopico');
+const btnVoltar = document.getElementById('btnVoltar');
+
+// Conteúdos
+const topicosConteudo = {
+  "1-t1": `<div class="container"><h1>Página Multimídia</h1>
+  <h2>Imagens</h2><img class="imagem" src="https://picsum.photos/800/200">
+  <img class="imagem" src="https://picsum.photos/800/201">
+  <h2>Vídeos</h2><video class="video" controls><source src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+  <h2>Áudios</h2><audio class="audio" controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+  <h2>Mensagem</h2><p>Olá! Bem-vindo à nossa página multimídia!</p></div>`,
+  
+  "1-t2": `<form>
+  <fieldset><legend>Dados Pessoais</legend>
+  <label>Nome:</label><input type="text" name="nome"><br>
+  <label>Nome do Pai:</label><input type="text" name="nome_pai"><br>
+  <label>Nome da Mãe:</label><input type="text" name="nome_mae"><br>
+  <label>Bilhete:</label><input type="text" name="bilhete"><br>
+  <label>Residência:</label><input type="text" name="residencia"><br></fieldset>
+  <fieldset><legend>Dados Académicos</legend>
+  <label>Instituição:</label><input type="text" name="instituicao"><br>
+  <label>Curso:</label><input type="text" name="curso"><br></fieldset>
+  <input type="submit" value="Enviar"></form>`,
+
+  "1-t3": `<form>
+  <h2>Formulário Completo</h2>
+  Nome: <input type="text" name="nome"><br>
+  Nome do Pai: <input type="text" name="nome_pai"><br>
+  Nome da Mãe: <input type="text" name="nome_mae"><br>
+  Bilhete: <input type="text" name="bilhete"><br>
+  Residência: <input type="text" name="residencia"><br>
+  Bairro: <input type="text" name="bairro"><br>
+  Província: <input type="text" name="provincia"><br>
+  Data Nascimento: <input type="date" name="nascimento"><br>
+  Sexo: <input type="radio" name="sexo" value="M">M
+  <input type="radio" name="sexo" value="F">F<br>
+  Estado Civil: <select name="estado_civil"><option>Solteiro(a)</option></select><br>
+  Altura: <input type="number" name="altura"><br>
+  Emissão Bilhete: <input type="date" name="emissao"><br>
+  Válido Até: <input type="date" name="validade"><br>
+  Instituição: <input type="text" name="instituicao"><br>
+  Curso: <input type="text" name="curso"><br>
+  Classe: <input type="text" name="classe"><br>
+  Ano Ingresso: <input type="text" name="ano_ingresso"><br>
+  Nº Estudante: <input type="text" name="numero_estudante"><br>
+  <input type="submit" value="Enviar"></form>`,
+
+  "1-t4": "<p>Conteúdo t4 do I Trimestre</p>",
+  "1-t5": "<p>Conteúdo t5 do I Trimestre</p>",
+
+  "2-t1": `<h1>Introdução ao CSS</h1><p>CSS (Cascading Style Sheets) ...</p>`,
+  "2-t2": `<h1>Sintaxe e Seletores CSS</h1><p>Conteúdo detalhado...</p>`,
+  "2-t3": "<p>Conteúdo t3 do II Trimestre</p>",
+  "2-t4": "<p>Conteúdo t4 do II Trimestre</p>",
+  "2-t5": "<p>Conteúdo t5 do II Trimestre</p>",
+
+  "3-t1": "<p>Conteúdo t1 do III Trimestre</p>",
+  "3-t2": "<p>Conteúdo t2 do III Trimestre</p>",
+  "3-t3": "<p>Conteúdo t3 do III Trimestre</p>",
+  "3-t4": "<p>Conteúdo t4 do III Trimestre</p>",
+  "3-t5": "<p>Conteúdo t5 do III Trimestre</p>"
+};
+
+// Mostrar trimestres
+btnIniciar.addEventListener('click', ()=>{
+  btnIniciar.style.display='none';
+  trimestres.style.display='block';
+});
+
+// Clique nos tópicos
+document.querySelectorAll('.trimestre ul li a').forEach(link=>{
+  link.addEventListener('click', e=>{
+    e.preventDefault();
+    const topico = link.dataset.topico;
+    tituloTopico.innerText = topico;
+    conteudoTopico.innerHTML = topicosConteudo[topico] || "<p>Conteúdo não disponível</p>";
+    trimestres.style.display='none';
+    topicosDiv.style.display='block';
+  });
+});
+
+// Botão voltar
+btnVoltar.addEventListener('click', ()=>{
+  topicosDiv.style.display='none';
+  trimestres.style.display='block';
+});
+</script>
+
+</body>
+</html>
