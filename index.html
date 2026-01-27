@@ -1,230 +1,209 @@
-<!DOCTYPE html>
+r<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programa Trimestral</title>
-<style>
-:root {
-  --cor-fundo: #f0f4f8;
-  --cor-header: #2c3e50;
-  --cor-texto: #fff;
-  --cor-card: #fff;
-  --cor-link1: #3498db;
-  --cor-hover1: #2980b9;
-  --cor-link2: #e67e22;
-  --cor-hover2: #d35400;
-  --cor-link3: #8e44ad;
-  --cor-hover3: #732d91;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalhos de Programação</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+    body { background:#f1f5f9; color:#111; }
+    header { background:#3e68ca; color:#fff; padding:15px 25px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
+    header h1 a { color:#fff; text-decoration:none; font-size:20px; }
+    .menu-toggle { display:none; font-size:26px; background:none; border:none; color:#fff; cursor:pointer; }
+    nav { display:flex; gap:10px; }
+    nav a { text-decoration:none; padding:8px 16px; background:#1e293b; color:#fff; border-radius:6px; font-weight:bold; transition:0.3s; }
+    nav a:hover { background:#3e68ca; color:#000; }
+    main { padding:40px; max-width:1200px; margin:auto; }
+    .trimestres h2 { margin-top:20px; cursor:pointer; color:#3e68ca; }
+    .tarefas div { display:inline-block; padding:8px 16px; margin:5px; background:#1e293b; color:#fff; border-radius:6px; cursor:pointer; font-weight:bold; transition:0.3s; }
+    .tarefas div:hover { background:#3e68ca; color:#000; }
+    #conteudoTarefa { margin-top:30px; }
 
-* { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
-
-body { background: var(--cor-fundo); color: #333; }
-
-header { background: var(--cor-header); color: var(--cor-texto); padding: 15px 20px; text-align: center; }
-header h1 { margin: 0; font-size: 28px; }
-
-main { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
-
-.btn {
-  padding: 12px 25px; font-size: 18px; background: var(--cor-link1);
-  color: var(--cor-texto); border: none; border-radius: 8px; cursor: pointer; transition: 0.3s;
-}
-.btn:hover { background: var(--cor-hover1); }
-
-.trimestre, .topicos { background: var(--cor-card); padding: 30px 50px; border-radius: 12px;
-box-shadow: 0 6px 15px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 800px; transition: 0.3s; }
-.trimestre:hover, .topicos:hover { transform: translateY(-3px); }
-
-.trimestre h2, .topicos h3 { font-size: 26px; margin-bottom: 20px; color: #2c3e50; }
-
-ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-
-ul li a { text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; display: inline-block; color: #fff; transition: 0.3s; }
-.trimestre1 ul li a { background: var(--cor-link1); }
-.trimestre1 ul li a:hover { background: var(--cor-hover1); }
-.trimestre2 ul li a { background: var(--cor-link2); }
-.trimestre2 ul li a:hover { background: var(--cor-hover2); }
-.trimestre3 ul li a { background: var(--cor-link3); }
-.trimestre3 ul li a:hover { background: var(--cor-hover3); }
-
-.trimestres, .topicos { display: none; }
-
-.topicos-content h1, .topicos-content h2, .topicos-content p, .topicos-content ul, 
-.topicos-content pre, .topicos-content code, .topicos-content div, .topicos-content img,
-.topicos-content video, .topicos-content audio, .topicos-content button, .topicos-content form,
-.topicos-content fieldset, .topicos-content legend, .topicos-content label, .topicos-content input,
-.topicos-content select { max-width: 800px; margin: 15px auto; }
-
-.topicos-content h2 { border-bottom: 2px solid #3498db; padding-bottom: 5px; color: #34495e; }
-.topicos-content strong { color: #2980b9; }
-.topicos-content code { background-color: #dfe6e9; padding: 2px 4px; border-radius: 3px; font-family: Consolas, monospace; }
-.topicos-content pre { background-color: #ecf0f1; padding: 10px; border-left: 5px solid #2980b9; border-radius: 5px; overflow-x: auto; }
-.topicos-content .menu { background-color: #3498db; color: white; padding: 10px; margin: 5px 0; border-radius: 5px; font-weight: bold; }
-.topicos-content #cabecalho { background-color: #95a5a6; color: white; padding: 15px; text-align: center; border-radius: 5px; }
-.topicos-content p.exemplo { color: blue; font-size: 16px; font-style: italic; }
-.topicos-content .container { background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-.topicos-content .imagem { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
-.topicos-content .video { width: 100%; height: 400px; border-radius: 10px; margin-bottom: 20px; }
-.topicos-content .audio { width: 100%; margin-bottom: 20px; }
-
-form input[type="text"], form input[type="number"], form input[type="date"], form select, form input[type="submit"], form input[type="radio"] {
-  padding: 8px; margin: 5px 0 10px 0; width: 100%; border-radius: 5px; border: 1px solid #ccc;
-}
-form input[type="submit"] { background-color: var(--cor-link1); color: #fff; cursor: pointer; transition: 0.3s; }
-form input[type="submit"]:hover { background-color: var(--cor-hover1); }
-
-@media (max-width:768px) {
-  ul { flex-direction: column; }
-  ul li a { width: 100%; text-align: center; }
-}
-</style>
+    @media (max-width:768px) {
+      .menu-toggle { display:block; }
+      nav { display:none; flex-direction:column; width:100%; margin-top:15px; }
+      nav.active { display:flex; }
+      header { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Seja bem-vindo ao programa</h1>
+  <h1><a href="#">HOME</a></h1>
+  <button class="menu-toggle">☰</button>
+  <nav id="menu">
+    <a href="#" onclick="showTrimestre('1')">I Trimestre</a>
+    <a href="#" onclick="showTrimestre('2')">II Trimestre</a>
+    <a href="#" onclick="showTrimestre('3')">III Trimestre</a>
+  </nav>
 </header>
 
 <main>
-<button class="btn" id="btnIniciar">Iniciar</button>
-
-<div class="trimestres">
-  <div class="trimestre trimestre1" data-trimestre="1">
+  <div class="trimestres" id="trimestre1" style="display:none;">
     <h2>I Trimestre</h2>
-    <ul>
-      <li><a href="#" data-topico="1-t1">t1</a></li>
-      <li><a href="#" data-topico="1-t2">t2</a></li>
-      <li><a href="#" data-topico="1-t3">t3</a></li>
-      <li><a href="#" data-topico="1-t4">t4</a></li>
-      <li><a href="#" data-topico="1-t5">t5</a></li>
-    </ul>
+    <div class="tarefas">
+      <div onclick="mostrarTarefa('1-t1')">T1</div>
+      <div onclick="mostrarTarefa('1-t2')">T2</div>
+      <div onclick="mostrarTarefa('1-t3')">T3</div>
+      <div onclick="mostrarTarefa('1-t4')">T4</div>
+      <div onclick="mostrarTarefa('1-t5')">T5</div>
+    </div>
   </div>
 
-  <div class="trimestre trimestre2" data-trimestre="2">
+  <div class="trimestres" id="trimestre2" style="display:none;">
     <h2>II Trimestre</h2>
-    <ul>
-      <li><a href="#" data-topico="2-t1">t1</a></li>
-      <li><a href="#" data-topico="2-t2">t2</a></li>
-      <li><a href="#" data-topico="2-t3">t3</a></li>
-      <li><a href="#" data-topico="2-t4">t4</a></li>
-      <li><a href="#" data-topico="2-t5">t5</a></li>
-    </ul>
+    <div class="tarefas">
+      <div onclick="mostrarTarefa('2-t1')">T1</div>
+      <div onclick="mostrarTarefa('2-t2')">T2</div>
+      <div>T3</div>
+      <div>T4</div>
+      <div>T5</div>
+    </div>
   </div>
 
-  <div class="trimestre trimestre3" data-trimestre="3">
+  <div class="trimestres" id="trimestre3" style="display:none;">
     <h2>III Trimestre</h2>
-    <ul>
-      <li><a href="#" data-topico="3-t1">t1</a></li>
-      <li><a href="#" data-topico="3-t2">t2</a></li>
-      <li><a href="#" data-topico="3-t3">t3</a></li>
-      <li><a href="#" data-topico="3-t4">t4</a></li>
-      <li><a href="#" data-topico="3-t5">t5</a></li>
-    </ul>
+    <div class="tarefas">
+      <div>T1</div>
+      <div>T2</div>
+      <div>T3</div>
+      <div>T4</div>
+      <div>T5</div>
+    </div>
   </div>
-</div>
 
-<div class="topicos">
-  <div class="topicos-content">
-    <h3 id="tituloTopico"></h3>
-    <div id="conteudoTopico"></div>
-    <button class="btn" id="btnVoltar">Voltar</button>
+  <div id="conteudoTarefa">
+    <h2>Bem-vindo ao programa trimestre!</h2>
+    .</p>
   </div>
-</div>
 </main>
 
 <script>
-const btnIniciar = document.getElementById('btnIniciar');
-const trimestres = document.querySelector('.trimestres');
-const topicosDiv = document.querySelector('.topicos');
-const tituloTopico = document.getElementById('tituloTopico');
-const conteudoTopico = document.getElementById('conteudoTopico');
-const btnVoltar = document.getElementById('btnVoltar');
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', () => menu.classList.toggle('active'));
 
-// Conteúdos
-const topicosConteudo = {
-  "1-t1": `<div class="container"><h1>Página Multimídia</h1>
-  <h2>Imagens</h2><img class="imagem" src="https://picsum.photos/800/200">
-  <img class="imagem" src="https://picsum.photos/800/201">
-  <h2>Vídeos</h2><video class="video" controls><source src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
-  <h2>Áudios</h2><audio class="audio" controls><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-  <h2>Mensagem</h2><p>Olá! Bem-vindo à nossa página multimídia!</p></div>`,
-  
-  "1-t2": `<form>
-  <fieldset><legend>Dados Pessoais</legend>
-  <label>Nome:</label><input type="text" name="nome"><br>
-  <label>Nome do Pai:</label><input type="text" name="nome_pai"><br>
-  <label>Nome da Mãe:</label><input type="text" name="nome_mae"><br>
-  <label>Bilhete:</label><input type="text" name="bilhete"><br>
-  <label>Residência:</label><input type="text" name="residencia"><br></fieldset>
-  <fieldset><legend>Dados Académicos</legend>
-  <label>Instituição:</label><input type="text" name="instituicao"><br>
-  <label>Curso:</label><input type="text" name="curso"><br></fieldset>
-  <input type="submit" value="Enviar"></form>`,
+  function showTrimestre(id){
+    document.querySelectorAll('.trimestres').forEach(t => t.style.display='none');
+    document.getElementById('trimestre'+id).style.display='block';
+    document.getElementById('conteudoTarefa').scrollIntoView({behavior:'smooth'});
+  }
 
-  "1-t3": `<form>
-  <h2>Formulário Completo</h2>
-  Nome: <input type="text" name="nome"><br>
-  Nome do Pai: <input type="text" name="nome_pai"><br>
-  Nome da Mãe: <input type="text" name="nome_mae"><br>
-  Bilhete: <input type="text" name="bilhete"><br>
-  Residência: <input type="text" name="residencia"><br>
-  Bairro: <input type="text" name="bairro"><br>
-  Província: <input type="text" name="provincia"><br>
-  Data Nascimento: <input type="date" name="nascimento"><br>
-  Sexo: <input type="radio" name="sexo" value="M">M
-  <input type="radio" name="sexo" value="F">F<br>
-  Estado Civil: <select name="estado_civil"><option>Solteiro(a)</option></select><br>
-  Altura: <input type="number" name="altura"><br>
-  Emissão Bilhete: <input type="date" name="emissao"><br>
-  Válido Até: <input type="date" name="validade"><br>
-  Instituição: <input type="text" name="instituicao"><br>
-  Curso: <input type="text" name="curso"><br>
-  Classe: <input type="text" name="classe"><br>
-  Ano Ingresso: <input type="text" name="ano_ingresso"><br>
-  Nº Estudante: <input type="text" name="numero_estudante"><br>
-  <input type="submit" value="Enviar"></form>`,
+  const tarefas = {
+    // I Trimestre
+    "1-t1": `
+      <h1>Página Multimídia</h1>
+      <h2>Imagens</h2>
+      <img src="https://picsum.photos/800/200">
+      <img src="https://picsum.photos/800/201">
+      <h2>Vídeos</h2>
+      <video controls width="100%">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+      </video>
+      <h2>Áudios</h2>
+      <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+      </audio>
+      <h2>Mensagem</h2>
+      <p>Olá! Bem-vindo à nossa página multimídia!</p>
+    `,
+    "1-t2": `
+      <form>
+        <fieldset><legend>Dados Pessoais</legend>
+        <label>Nome:</label><input type="text"><br>
+        <label>Nome do Pai:</label><input type="text"><br>
+        <label>Nome da Mãe:</label><input type="text"><br>
+        <label>Bilhete:</label><input type="text"><br>
+        <label>Residência:</label><input type="text"><br></fieldset>
+        <fieldset><legend>Dados Académicos</legend>
+        <label>Instituição:</label><input type="text"><br>
+        <label>Curso:</label><input type="text"><br></fieldset>
+        <input type="submit" value="Enviar">
+      </form>
+    `,
+    "1-t3": `
+      <form>
+        <h2>Formulário Completo</h2>
+        Nome: <input type="text"><br>
+        Nome do Pai: <input type="text"><br>
+        Nome da Mãe: <input type="text"><br>
+        Bilhete: <input type="text"><br>
+        Residência: <input type="text"><br>
+        Bairro: <input type="text"><br>
+        Província: <input type="text"><br>
+        Data Nascimento: <input type="date"><br>
+        Sexo: <input type="radio" name="sexo" value="M">M
+        <input type="radio" name="sexo" value="F">F<br>
+        Estado Civil: <select><option>Solteiro(a)</option></select><br>
+        Altura: <input type="number"><br>
+        Emissão Bilhete: <input type="date"><br>
+        Válido Até: <input type="date"><br>
+        Instituição: <input type="text"><br>
+        Curso: <input type="text"><br>
+        Classe: <input type="text"><br>
+        Ano Ingresso: <input type="text"><br>
+        Nº Estudante: <input type="text"><br>
+        <input type="submit" value="Enviar">
+      </form>
+    `,
+    "1-t4": `
+      <!-- Conteúdo do Projeto Web (Home, Media, Form) -->
+      <h1>Página Projeto</h1>
+      <p>Home, mídia e formulário do Projeto Web.</p>
+    `,
+    "1-t5": `
+      <!-- Conteúdo do Site Carros -->
+      <h1>Carros</h1>
+      <p>Home / Carros / Contato</p>
+    `,
+    // II Trimestre
+    "2-t1": `
+      <header style="background:#2c3e50;color:#fff;padding:20px;text-align:center">
+        <h1>CSS – Folhas de Estilo em Cascata</h1>
+        <p>Aprendendo a estilizar páginas web</p>
+      </header>
+      <main style="max-width:900px;margin:30px auto;background:#fff;padding:25px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+        <h2>O que é CSS?</h2>
+        <p>O CSS é uma linguagem de estilo poderosa e flexível...</p>
+        <h2>Importância do CSS no Desenvolvimento Web</h2>
+        <p>A importância do CSS no desenvolvimento web é fundamental...</p>
+        <h2>Tipos de Folhas de Estilo</h2>
+        <ul>
+          <li><strong>Inline:</strong> definido diretamente no HTML.</li>
+          <li><strong>Interno:</strong> definido na tag &lt;style&gt;.</li>
+          <li><strong>Externo:</strong> definido em arquivo .css.</li>
+        </ul>
+      </main>
+      <footer style="background:#2c3e50;color:#fff;text-align:center;padding:15px">© 2026 • Programa Educacional sobre CSS</footer>
+    `,
+    "2-t2": `
+      <header style="background:#1f3c88;color:#fff;padding:25px;text-align:center">
+        <h1>Sintaxe do CSS</h1>
+        <p>Como funcionam seletores, propriedades e valores</p>
+      </header>
+      <main style="max-width:900px;margin:30px auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.1);">
+        <h2>Estrutura da Sintaxe CSS</h2>
+        <p>A sintaxe do CSS é uma estrutura composta por um seletor...</p>
+        <h2>Tipos de Seletores CSS</h2>
+        <ul>
+          <li><strong>Seletores de elemento:</strong> aplicam estilos a todos os elementos de um mesmo tipo.</li>
+          <li><strong>Seletores de classe:</strong> selecionam elementos que possuem uma classe específica.</li>
+          <li><strong>Seletores de ID:</strong> aplicam estilos a um único elemento identificado por um ID.</li>
+        </ul>
+        <h2>Seletores Avançados</h2>
+        <p>Seletores de atributo e pseudo-classes aumentam a flexibilidade.</p>
+        <h2>Conclusão</h2>
+        <p>A combinação de seletores e propriedades permite criar estilos complexos e personalizados.</p>
+      </main>
+      <footer style="background:#1f3c88;color:#fff;text-align:center;padding:15px;margin-top:40px">© 2026 • Conteúdo Educacional sobre CSS 😊</footer>
+    `
+    // II Trimestre T3-T5 e III Trimestre podem ser adicionados depois
+  };
 
-  "1-t4": "<p>Conteúdo t4 do I Trimestre</p>",
-  "1-t5": "<p>Conteúdo t5 do I Trimestre</p>",
-
-  "2-t1": `<h1>Introdução ao CSS</h1><p>CSS (Cascading Style Sheets) ...</p>`,
-  "2-t2": `<h1>Sintaxe e Seletores CSS</h1><p>Conteúdo detalhado...</p>`,
-  "2-t3": "<p>Conteúdo t3 do II Trimestre</p>",
-  "2-t4": "<p>Conteúdo t4 do II Trimestre</p>",
-  "2-t5": "<p>Conteúdo t5 do II Trimestre</p>",
-
-  "3-t1": "<p>Conteúdo t1 do III Trimestre</p>",
-  "3-t2": "<p>Conteúdo t2 do III Trimestre</p>",
-  "3-t3": "<p>Conteúdo t3 do III Trimestre</p>",
-  "3-t4": "<p>Conteúdo t4 do III Trimestre</p>",
-  "3-t5": "<p>Conteúdo t5 do III Trimestre</p>"
-};
-
-// Mostrar trimestres
-btnIniciar.addEventListener('click', ()=>{
-  btnIniciar.style.display='none';
-  trimestres.style.display='block';
-});
-
-// Clique nos tópicos
-document.querySelectorAll('.trimestre ul li a').forEach(link=>{
-  link.addEventListener('click', e=>{
-    e.preventDefault();
-    const topico = link.dataset.topico;
-    tituloTopico.innerText = topico;
-    conteudoTopico.innerHTML = topicosConteudo[topico] || "<p>Conteúdo não disponível</p>";
-    trimestres.style.display='none';
-    topicosDiv.style.display='block';
-  });
-});
-
-// Botão voltar
-btnVoltar.addEventListener('click', ()=>{
-  topicosDiv.style.display='none';
-  trimestres.style.display='block';
-});
+  function mostrarTarefa(id){
+    document.getElementById("conteudoTarefa").innerHTML = tarefas[id] || "<p>Conteúdo ainda não disponível.</p>";
+  }
 </script>
 
 </body>
