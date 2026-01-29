@@ -1,210 +1,191 @@
-r<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trabalhos de Programação</title>
+  <title>Carros</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
-    body { background:#f1f5f9; color:#111; }
-    header { background:#3e68ca; color:#fff; padding:15px 25px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:1000; }
-    header h1 a { color:#fff; text-decoration:none; font-size:20px; }
-    .menu-toggle { display:none; font-size:26px; background:none; border:none; color:#fff; cursor:pointer; }
-    nav { display:flex; gap:10px; }
-    nav a { text-decoration:none; padding:8px 16px; background:#1e293b; color:#fff; border-radius:6px; font-weight:bold; transition:0.3s; }
-    nav a:hover { background:#3e68ca; color:#000; }
-    main { padding:40px; max-width:1200px; margin:auto; }
-    .trimestres h2 { margin-top:20px; cursor:pointer; color:#3e68ca; }
-    .tarefas div { display:inline-block; padding:8px 16px; margin:5px; background:#1e293b; color:#fff; border-radius:6px; cursor:pointer; font-weight:bold; transition:0.3s; }
-    .tarefas div:hover { background:#3e68ca; color:#000; }
-    #conteudoTarefa { margin-top:30px; }
-
-    @media (max-width:768px) {
-      .menu-toggle { display:block; }
-      nav { display:none; flex-direction:column; width:100%; margin-top:15px; }
-      nav.active { display:flex; }
-      header { flex-direction:column; align-items:flex-start; }
+    /* Reset e fonte */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    /* Header e Menu */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin-top: 10px;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
+
+    /* Seções */
+    section {
+      padding: 20px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    section.mostrar {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Tabela de preços */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Formulário */
+    input, textarea, button {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
   </style>
 </head>
 <body>
 
-<header>
-  <h1><a href="#">HOME</a></h1>
-  <button class="menu-toggle">☰</button>
-  <nav id="menu">
-    <a href="#" onclick="showTrimestre('1')">I Trimestre</a>
-    <a href="#" onclick="showTrimestre('2')">II Trimestre</a>
-    <a href="#" onclick="showTrimestre('3')">III Trimestre</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header>
+    <h1>Carros</h1>
+    <nav>
+      <ul>
+        <li><a onclick="mostrarPagina('home')">Home</a></li>
+        <li><a onclick="mostrarPagina('carros')">Carros</a></li>
+        <li><a onclick="mostrarPagina('contato')">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <div class="trimestres" id="trimestre1" style="display:none;">
-    <h2>I Trimestre</h2>
-    <div class="tarefas">
-      <div onclick="mostrarTarefa('1-t1')">T1</div>
-      <div onclick="mostrarTarefa('1-t2')">T2</div>
-      <div onclick="mostrarTarefa('1-t3')">T3</div>
-      <div onclick="mostrarTarefa('1-t4')">T4</div>
-      <div onclick="mostrarTarefa('1-t5')">T5</div>
-    </div>
-  </div>
+  <!-- PÁGINA HOME -->
+  <section id="home" class="mostrar">
+    <h2>Bem-vindo ao site de carros</h2>
+    <p>Aqui você encontra informações, fotos, vídeos e muito mais sobre carros.</p>
+  </section>
 
-  <div class="trimestres" id="trimestre2" style="display:none;">
-    <h2>II Trimestre</h2>
-    <div class="tarefas">
-      <div onclick="mostrarTarefa('2-t1')">T1</div>
-      <div onclick="mostrarTarefa('2-t2')">T2</div>
-      <div>T3</div>
-      <div>T4</div>
-      <div>T5</div>
-    </div>
-  </div>
+  <!-- PÁGINA CARROS -->
+  <section id="carros">
+    <h2>Modelos de Carros</h2>
+    <img src="https://via.placeholder.com/400x200" alt="Carro exemplo">
 
-  <div class="trimestres" id="trimestre3" style="display:none;">
-    <h2>III Trimestre</h2>
-    <div class="tarefas">
-      <div>T1</div>
-      <div>T2</div>
-      <div>T3</div>
-      <div>T4</div>
-      <div>T5</div>
-    </div>
-  </div>
+    <h3>Vídeo do Carro</h3>
+    <video width="400" controls>
+      <source src="video.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos.
+    </video>
 
-  <div id="conteudoTarefa">
-    <h2>Bem-vindo ao programa trimestre!</h2>
-    .</p>
-  </div>
-</main>
+    <h3>Áudio do Motor</h3>
+    <audio controls>
+      <source src="motor.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudios.
+    </audio>
 
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
-  toggle.addEventListener('click', () => menu.classList.toggle('active'));
+    <h3>Tabela de Preços</h3>
+    <table>
+      <tr>
+        <th>Modelo</th>
+        <th>Preço</th>
+      </tr>
+      <tr>
+        <td>Carro A</td>
+        <td>$20.000</td>
+      </tr>
+      <tr>
+        <td>Carro B</td>
+        <td>$30.000</td>
+      </tr>
+    </table>
+  </section>
 
-  function showTrimestre(id){
-    document.querySelectorAll('.trimestres').forEach(t => t.style.display='none');
-    document.getElementById('trimestre'+id).style.display='block';
-    document.getElementById('conteudoTarefa').scrollIntoView({behavior:'smooth'});
-  }
+  <!-- PÁGINA CONTATO -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <form>
+      <label>Nome:</label><br>
+      <input type="text" name="nome" placeholder="Seu nome"><br>
 
-  const tarefas = {
-    // I Trimestre
-    "1-t1": `
-      <h1>Página Multimídia</h1>
-      <h2>Imagens</h2>
-      <img src="https://picsum.photos/800/200">
-      <img src="https://picsum.photos/800/201">
-      <h2>Vídeos</h2>
-      <video controls width="100%">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4">
-      </video>
-      <h2>Áudios</h2>
-      <audio controls>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-      </audio>
-      <h2>Mensagem</h2>
-      <p>Olá! Bem-vindo à nossa página multimídia!</p>
-    `,
-    "1-t2": `
-      <form>
-        <fieldset><legend>Dados Pessoais</legend>
-        <label>Nome:</label><input type="text"><br>
-        <label>Nome do Pai:</label><input type="text"><br>
-        <label>Nome da Mãe:</label><input type="text"><br>
-        <label>Bilhete:</label><input type="text"><br>
-        <label>Residência:</label><input type="text"><br></fieldset>
-        <fieldset><legend>Dados Académicos</legend>
-        <label>Instituição:</label><input type="text"><br>
-        <label>Curso:</label><input type="text"><br></fieldset>
-        <input type="submit" value="Enviar">
-      </form>
-    `,
-    "1-t3": `
-      <form>
-        <h2>Formulário Completo</h2>
-        Nome: <input type="text"><br>
-        Nome do Pai: <input type="text"><br>
-        Nome da Mãe: <input type="text"><br>
-        Bilhete: <input type="text"><br>
-        Residência: <input type="text"><br>
-        Bairro: <input type="text"><br>
-        Província: <input type="text"><br>
-        Data Nascimento: <input type="date"><br>
-        Sexo: <input type="radio" name="sexo" value="M">M
-        <input type="radio" name="sexo" value="F">F<br>
-        Estado Civil: <select><option>Solteiro(a)</option></select><br>
-        Altura: <input type="number"><br>
-        Emissão Bilhete: <input type="date"><br>
-        Válido Até: <input type="date"><br>
-        Instituição: <input type="text"><br>
-        Curso: <input type="text"><br>
-        Classe: <input type="text"><br>
-        Ano Ingresso: <input type="text"><br>
-        Nº Estudante: <input type="text"><br>
-        <input type="submit" value="Enviar">
-      </form>
-    `,
-    "1-t4": `
-      <!-- Conteúdo do Projeto Web (Home, Media, Form) -->
-      <h1>Página Projeto</h1>
-      <p>Home, mídia e formulário do Projeto Web.</p>
-    `,
-    "1-t5": `
-      <!-- Conteúdo do Site Carros -->
-      <h1>Carros</h1>
-      <p>Home / Carros / Contato</p>
-    `,
-    // II Trimestre
-    "2-t1": `
-      <header style="background:#2c3e50;color:#fff;padding:20px;text-align:center">
-        <h1>CSS – Folhas de Estilo em Cascata</h1>
-        <p>Aprendendo a estilizar páginas web</p>
-      </header>
-      <main style="max-width:900px;margin:30px auto;background:#fff;padding:25px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);">
-        <h2>O que é CSS?</h2>
-        <p>O CSS é uma linguagem de estilo poderosa e flexível...</p>
-        <h2>Importância do CSS no Desenvolvimento Web</h2>
-        <p>A importância do CSS no desenvolvimento web é fundamental...</p>
-        <h2>Tipos de Folhas de Estilo</h2>
-        <ul>
-          <li><strong>Inline:</strong> definido diretamente no HTML.</li>
-          <li><strong>Interno:</strong> definido na tag &lt;style&gt;.</li>
-          <li><strong>Externo:</strong> definido em arquivo .css.</li>
-        </ul>
-      </main>
-      <footer style="background:#2c3e50;color:#fff;text-align:center;padding:15px">© 2026 • Programa Educacional sobre CSS</footer>
-    `,
-    "2-t2": `
-      <header style="background:#1f3c88;color:#fff;padding:25px;text-align:center">
-        <h1>Sintaxe do CSS</h1>
-        <p>Como funcionam seletores, propriedades e valores</p>
-      </header>
-      <main style="max-width:900px;margin:30px auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.1);">
-        <h2>Estrutura da Sintaxe CSS</h2>
-        <p>A sintaxe do CSS é uma estrutura composta por um seletor...</p>
-        <h2>Tipos de Seletores CSS</h2>
-        <ul>
-          <li><strong>Seletores de elemento:</strong> aplicam estilos a todos os elementos de um mesmo tipo.</li>
-          <li><strong>Seletores de classe:</strong> selecionam elementos que possuem uma classe específica.</li>
-          <li><strong>Seletores de ID:</strong> aplicam estilos a um único elemento identificado por um ID.</li>
-        </ul>
-        <h2>Seletores Avançados</h2>
-        <p>Seletores de atributo e pseudo-classes aumentam a flexibilidade.</p>
-        <h2>Conclusão</h2>
-        <p>A combinação de seletores e propriedades permite criar estilos complexos e personalizados.</p>
-      </main>
-      <footer style="background:#1f3c88;color:#fff;text-align:center;padding:15px;margin-top:40px">© 2026 • Conteúdo Educacional sobre CSS 😊</footer>
-    `
-    // II Trimestre T3-T5 e III Trimestre podem ser adicionados depois
-  };
+      <label>Email:</label><br>
+      <input type="email" name="email" placeholder="Seu email"><br>
 
-  function mostrarTarefa(id){
-    document.getElementById("conteudoTarefa").innerHTML = tarefas[id] || "<p>Conteúdo ainda não disponível.</p>";
-  }
-</script>
+      <label>Mensagem:</label><br>
+      <textarea name="mensagem" placeholder="Sua mensagem"></textarea><br>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- SCRIPT DE TROCA DE PÁGINA -->
+  <script>
+    function mostrarPagina(pagina) {
+      const secoes = document.querySelectorAll("section");
+      secoes.forEach(sec => sec.classList.remove("mostrar"));
+
+      document.getElementById(pagina).classList.add("mostrar");
+    }
+  </script>
 
 </body>
 </html>
