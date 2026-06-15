@@ -1,184 +1,159 @@
-<html lang="Projcto">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+// ===============================
+// 3º TRIMESTRE - JAVASCRIPT
+// Sistema completo (T1 a T5)
+// ===============================
 
-  <style>
-    :root{--bg:#f7f7fb;--card:#fff;--accent:#0066cc}
-    body{font-family:Inter, system-ui, Arial, sans-serif; margin:0; background:var(--bg); color:#111}
-    header{background:linear-gradient(90deg, #0b63a6, #0b86c6); color:white; padding:1rem}
-    .container{max-width:980px;margin:1.25rem auto;padding:1rem}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
-    .card{background:var(--card);border-radius:12px;padding:1rem;box-shadow:0 6px 18px rgba(10,10,20,0.06)}
-    img.resp{width:100%;height:auto;border-radius:8px}
-    video, audio{width:100%;border-radius:8px;background:#000}
-    table{width:100%;border-collapse:collapse;margin-top:.5rem}
-    th,td{padding:.5rem .6rem;border:1px solid #e6e9ef;text-align:left}
-    form .row{display:flex;gap:.6rem}
-    form input, form textarea, form select{width:100%;padding:.6rem;border:1px solid #d6d9e0;border-radius:6px}
-    nav{display:flex;gap:.5rem;align-items:center}
-    nav button{background:transparent;border:1px solid rgba(255,255,255,.15);color:white;padding:.4rem .6rem;border-radius:6px}
-    footer{padding:1rem;text-align:center;color:#666;font-size:.9rem}
-    @media (max-width:880px){.grid{grid-template-columns:1fr} .container{padding:.5rem}}
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
-      <h1 style="margin:0;font-size:1.25rem"> Página </h1>
-      <nav>
-        <button onclick="showSection('home')">Home</button>
-        <button onclick="showSection('media')">Mídia</button>
-        <button onclick="showSection('form')">Formulário</button>
-      </nav>
-    </div>
-  </header>  <main class="container">
-    <!-- HOME -->
-    <section id="home" class="card" style="display:block">
-      <h2>Bem-vindo(a)</h2>
+let opcao = prompt(
+`Escolha o módulo:
+1 - Sistema de Alunos
+2 - Calculadora
+3 - Média Simples
+4 - Console de Aluno
+5 - Sistema com Funções`
+);
 
-      <p>Link útil: <a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Web Docs</a></p>
-      <div style="margin-top:1rem">
-   <div style="overflow:auto">
+// ===============================
+// T1 - SISTEMA DE ALUNOS
+// ===============================
+if (opcao === "1") {
 
-<section id="produtos">
-    <h2>Produtos e Serviços</h2>
-    <p>Confira alguns de nossos produtos e serviços:</p>
-    <table>
-        <tr>
-            <th>Produto/Serviço</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-        </tr>
-        <tr>
-            <td>Produto A</td>
-            <td>Descrição do Produto A</td>
-            <td>R$ 100,00</td>
-        </tr>
-        <tr>
-            <td>Serviço B</td>
-            <td>Descrição do Serviço B</td>
-            <td>R$ 200,00</td>
-        </tr>
-        <tr>
-            <td>Produto C</td>
-            <td>Descrição do Produto C</td>
-            <td>R$ 150,00</td>
-        </tr>
-    </table>
-</section>
+    let alunos = [];
+    let continuar = "sim";
 
+    while (continuar.toLowerCase() === "sim") {
 
-    </section><!-- MEDIA -->
-<section id="media" class="card" style="display:none">
-  <h2>Mídia (Imagem, Vídeo e Áudio)</h2>
+        let nome = prompt("Nome do aluno:");
+        let n1 = Number(prompt("Nota 1:"));
+        let n2 = Number(prompt("Nota 2:"));
+        let n3 = Number(prompt("Nota 3:"));
 
-  <h3>Imagem</h3>
+        let media = (n1 + n2 + n3) / 3;
+        let situacao = media >= 10 ? "Aprovado" : "Reprovado";
 
-  <img class="resp" src="https://via.placeholder.com/1200x600.png?text=Imagem+adicionar+imagem" alt="Imagem ">
+        alunos.push({
+            Nome: nome,
+            Nota1: n1,
+            Nota2: n2,
+            Nota3: n3,
+            Media: media.toFixed(2),
+            Situacao: situacao
+        });
 
-  <hr style="margin:1rem 0">
-
-  <h3>Vídeo Institucional</h3>
-    <video controls>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        Seu navegador não suporta vídeo.
-    </video>
-
-  <hr style="margin:1rem 0">
-
-    <h3>Áudio Institucional</h3>
-    <audio controls>
-        <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
-        Seu navegador não suporta áudio.
-    </audio>
-</section>
-
-<!-- FORM -->
-<section id="form" class="card" style="display:none">
-  <h2>Formulário de Contato</h2>
-
-
-  <form id="contactForm" onsubmit="handleSubmit(event)">
-    <div class="row" style="margin-bottom:.6rem">
-      <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
-      <input type="email" id="email" name="email" placeholder="Email" required>
-    </div>
-
-    <div style="margin-bottom:.6rem">
-      <select id="assunto" name="assunto">
-        <option value="duvida">Dúvida</option>
-        <option value="parceria">Parceria</option>
-        <option value="outro">Outro</option>
-      </select>
-    </div>
-
-    <div style="margin-bottom:.6rem">
-      <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva a sua mensagem..."></textarea>
-    </div>
-
-    <div style="display:flex;gap:.6rem;align-items:center;margin-bottom:.6rem">
-      <input type="file" id="arquivo" name="arquivo" accept="image/*">
-      <button type="button" onclick="clearForm()">Limpar</button>
-      <button type="submit">Enviar (simulado)</button>
-    </div>
-  </form>
-
-  <div class="card" style="margin-top:1rem;background:#fbfdff">
-    <h4>Pré-visualização dos dados</h4>
-    <div id="preview">Nenhum dado submetido ainda.</div>
-  </div>
-</section>
-
-  </main>  <footer>
-    <div class="container">
-      <small>Exemplo simples -- Salve este ficheiro como <code>index.html</code> e abra no navegador.</small>
-    </div>
-  </footer>  <script>
-    function showSection(id){
-      document.querySelectorAll('main section').forEach(s => s.style.display = 'none');
-      const el = document.getElementById(id);
-      if(el) el.style.display = 'block';
-      window.scrollTo({top:0,behavior:'smooth'});
+        continuar = prompt("Adicionar outro aluno? (sim/não)");
     }
 
-    function handleSubmit(e){
-      e.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
-      const assunto = document.getElementById('assunto').value;
-      const mensagem = document.getElementById('mensagem').value;
-      const arquivo = document.getElementById('arquivo').files[0];
+    console.table(alunos);
+}
 
-      let html = `<p><strong>Nome:</strong> ${escapeHtml(nome)}</p>`;
-      html += `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`;
-      html += `<p><strong>Assunto:</strong> ${escapeHtml(assunto)}</p>`;
-      html += `<p><strong>Mensagem:</strong><br>${escapeHtml(mensagem).replace(/\n/g,'<br>')}</p>`;
+// ===============================
+// T2 - CALCULADORA
+// ===============================
+else if (opcao === "2") {
 
-      if(arquivo){
-        const reader = new FileReader();
-        reader.onload = function(ev){
-          html += `<p><strong>Arquivo:</strong><br><img src="${ev.target.result}" alt="preview" style="max-width:200px;border-radius:6px"></p>`;
-          document.getElementById('preview').innerHTML = html;
-        }
-        reader.readAsDataURL(arquivo);
-      } else {
-        document.getElementById('preview').innerHTML = html;
-      }
+    let num1 = Number(prompt("Digite o primeiro número:"));
+    let num2 = Number(prompt("Digite o segundo número:"));
+    let op = prompt("Operação (+, -, *, /)");
+
+    let resultado;
+
+    switch (op) {
+        case "+":
+            resultado = num1 + num2;
+            break;
+
+        case "-":
+            resultado = num1 - num2;
+            break;
+
+        case "*":
+            resultado = num1 * num2;
+            break;
+
+        case "/":
+            resultado = num2 !== 0 ? num1 / num2 : "Erro divisão por zero";
+            break;
+
+        default:
+            resultado = "Operação inválida";
     }
 
-    function clearForm(){
-      document.getElementById('contactForm').reset();
-      document.getElementById('preview').innerHTML = 'Nenhum dado submetido ainda.';
+    alert("Resultado: " + resultado);
+    console.log(resultado);
+}
+
+// ===============================
+// T3 - MÉDIA SIMPLES
+// ===============================
+else if (opcao === "3") {
+
+    let n1 = Number(prompt("Nota 1:"));
+    let n2 = Number(prompt("Nota 2:"));
+    let n3 = Number(prompt("Nota 3:"));
+
+    let media = (n1 + n2 + n3) / 3;
+
+    if (isNaN(media)) {
+        alert("Valores inválidos!");
+    } else {
+        alert("Média final: " + media.toFixed(2));
+    }
+}
+
+// ===============================
+// T4 - CONSOLE DE ALUNO
+// ===============================
+else if (opcao === "4") {
+
+    let nome = prompt("Nome do aluno:");
+    let n1 = Number(prompt("Nota 1"));
+    let n2 = Number(prompt("Nota 2"));
+    let n3 = Number(prompt("Nota 3"));
+
+    let media = (n1 + n2 + n3) / 3;
+    let situacao = media >= 10 ? "Aprovado" : "Reprovado";
+
+    let aluno = {
+        Nome: nome,
+        Nota1: n1,
+        Nota2: n2,
+        Nota3: n3,
+        Media: media.toFixed(2),
+        Situacao: situacao
+    };
+
+    console.table([aluno]);
+}
+
+// ===============================
+// T5 - FUNÇÕES REUTILIZÁVEIS
+// ===============================
+else if (opcao === "5") {
+
+    function calcularMedia(n1, n2, n3) {
+        return (n1 + n2 + n3) / 3;
     }
 
-    function escapeHtml(text){
-      return String(text)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+    function situacao(media) {
+        return media >= 10 ? "Aprovado" : "Reprovado";
     }
-  </script></body>
-</html>
+
+    let nome = prompt("Nome:");
+    let n1 = Number(prompt("Nota 1"));
+    let n2 = Number(prompt("Nota 2"));
+    let n3 = Number(prompt("Nota 3"));
+
+    let media = calcularMedia(n1, n2, n3);
+
+    console.log({
+        Nome: nome,
+        Media: media.toFixed(2),
+        Situacao: situacao(media)
+    });
+}
+
+// ===============================
+// OPÇÃO INVÁLIDA
+// ===============================
+else {
+    alert("Opção inválida!");
+}
